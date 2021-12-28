@@ -10,6 +10,7 @@ using namespace sf;
 
 int main()
 {
+	// Initialize window
 	RenderWindow window(VideoMode(constants::SCREEN_WIDTH, constants::SCREEN_HEIGHT), "Solar System Model");
 	window.setFramerateLimit(60);
 
@@ -25,8 +26,10 @@ int main()
 
 	Clock clock;
 
+	// Main loop
 	while (window.isOpen())
 	{
+		// Close window
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -35,19 +38,23 @@ int main()
 		}
 		window.clear();
 		
+		// Get elapsed time
 		float seconds = clock.restart().asSeconds();
 
+		// Update planets' velocities
 		for (int i = 0; i < planets.size(); i++)
 		{
 			planets[i].reactToGravity(planets, i, seconds);
 		}
 
+		// Update planets' positions and draw
 		for (int i = 0; i < planets.size(); i++)
 		{
 			planets[i].update(seconds);
 			planets[i].draw(window);
 		}
 
+		// Update window display
 		window.display();
 	}
 
