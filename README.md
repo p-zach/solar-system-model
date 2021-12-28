@@ -1,4 +1,4 @@
-#solar-system-model
+# solar-system-model
 
 Simulating the movement of planetary bodies based on the law of gravitation.
 
